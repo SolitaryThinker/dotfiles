@@ -1,0 +1,7 @@
+#!/bin/bash
+
+TEMP_PATH="/tmp/temp_midi_gen"
+
+fluidsynth -i /usr/share/sounds/sf2/FluidR3_GM.sf2 -F $TEMP_PATH $1 &&
+mpv $TEMP_PATH
+rm $TEMP_PATH

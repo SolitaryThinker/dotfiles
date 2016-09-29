@@ -1,0 +1,17 @@
+#!/bin/bash
+
+WILY_SRC=~/code/vmtests/wily/amd64/20151201/root-image
+TRUSTY_SRC=~/code/vmtests/trusty/amd64/20151208.1/root-image
+DISK1=~/images/wily/target.img
+DISK2=~/images/wily/extra.img
+CFG=~/gpt.yaml
+
+INSTALL_SRC=$WILY_SRC
+if [ "$1" = "trusty" ]; then
+    INSTALL_SRC=$TRUSTY_SRC
+fi
+
+./tools/launch -nuser \
+    --kernel "$INSTALL_SRC-kernel" --initrd "$INSTALL_SRC-initrd" \
+    $INSTALL_SRC --disk $DISK1 --disk $DISK2 --publish "${INSTALL_SRC}.tar.gz" \
+    -- curtin --showtrace install -c "$CFG" "PUBURLroot-image.tar.gz"

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Arg 1: Directory with the images
+
+if [[ $1 != "" ]]
+then
+    cd $1
+fi
+for IMAGE in *.jpg *.png *.JPG *.PNG
+do
+    NEW_NAME="small_$IMAGE"
+    convert $IMAGE -thumbnail 100x75^ -gravity center -extent 100x75 $NEW_NAME
+    echo "$IMAGE -> $NEW_NAME"
+done

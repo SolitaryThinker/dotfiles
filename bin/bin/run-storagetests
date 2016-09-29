@@ -1,0 +1,108 @@
+#!/bin/bash
+
+VERBOSITY=1
+TEMPDIR=""
+
+Usage() {
+    cat <<EOF
+Usage: ${0##*/} [ options ] -- [ launch options ] boot-image
+
+    boot the image 'boot-image' using tools/launch so that it will run
+        make storagetests
+    after booting and report results. [ launch options ] can be any flags that
+    tools/launch accepts
+
+    options:
+        -h | --help         Show this message
+        -n | --numdisks     How many extra disks to attach (default is 3)
+        -v | --verbose      Print debug information
+
+    Example:
+        * boot bootimg.img, attach 3 extra disks and run storagetests
+            ${0##*/} -- bootimg.img
+        * boot boot.img using kern.img and initrd.img and run storagetests
+            ${0##*/} -- --kernel kern.img --initrd initrd.img boot.img
+        * boot boot.img, and add specified disks
+            ${0##*/} -n 0 -- -d disk1.img -d disk2.img boot.img
+
+EOF
+}
+
+log() {
+    if [ $1 -lt $VERBOSITY ]; then
+        echo "$2"
+    fi
+}
+
+clean() {
+    rm -rf $TEMPDIR
+}
+
+error() {
+    echo "$@" 1>&2
+    clean
+}
+
+main() {
+    local short_opts="n:vh"
+    local long_opts="help,numdisks:,verbose"
+    local getopt_out=""
+    getopt_out=$(getopt --name "${0##*/}" --options "${short_opts}" \
+        --long "${long_opts}" -- "$@") &&
+        eval set -- "${getopt_out}" || { return 1; }
+
+    local numdisks=3
+    local launch_args=""
+    local needed_files=(
+        Makefile
+        examples
+        tests
+        tools
+    )
+    local extra_pkgs=(
+        make
+        python3-nose
+    )
+
+    while [ $# -ne 0 ]; do
+        cur=${1}; next=${2}
+        case "$cur" in
+            -h|--help) Usage ; exit 0;;
+            -n|--numdisks) numdisks="$next"; shift;;
+            -v|--verbose) VERBOSITY=$((${VERBOSITY}+1));;
+            --) shift; break;;
+        esac
+        shift;
+    done
+
+    launch_args=( "$@" )
+
+    TEMPDIR=$(mktemp -d) || { error "failed to create tmpdir"; return 1; }
+    log 1 "Using tmpdir at ${TEMPDIR}"
+
+    for disknum in $(seq 1 $numdisks); do
+        local diskpath="${TEMPDIR}/disk-${disknum}.img"
+        log 1 "creating disk at ${diskpath}"
+
+        qemu-img create -f qcow2 "${diskpath}" 10G > /dev/null ||
+            { error "failed to create disk ${diskpath}"; return 1; }
+
+        launch_args[${#launch_args[@]}]="--disk ${diskpath}"
+    done
+
+    for file in "${needed_files[@]}"; do
+        launch_args[${#launch_args[@]}]="--add $file"
+    done
+
+    for pkg in "${extra_pkgs[@]}"; do
+        launch_args[${#launch_args[@]}]="--install $pkg"
+    done
+
+    cmd="tools/launch --silent ${launch_args[@]} -- make storagetests"
+    log 1 "Running command: $cmd"
+    $cmd
+
+    clean
+}
+
+main "$@"

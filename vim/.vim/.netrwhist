@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/magicanus/school-work/latin/quick-translations/written-out/68-69/original'
+let g:netrw_dirhist_2='/home/magicanus/dotfiles/bin'
+let g:netrw_dirhist_3='/home/magicanus/code/crazy_snd'
+let g:netrw_dirhist_4='/home/magicanus/tsjcl/htdocs/content'
+let g:netrw_dirhist_5='/home/magicanus/school-work/latin/certamen'
+let g:netrw_dirhist_6='/home/magicanus'

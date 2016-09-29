@@ -1,0 +1,82 @@
+#!/bin/bash
+
+NBD_DEV=/dev/nbd9
+TEMP_D=""
+
+error() { echo "$@" 1>&2; }
+
+Usage() {
+    cat <<EOF
+Usage: ${0##*/} boot-image cloudinit.deb
+
+    install cloud init package 'cloudinit.deb' into disk image
+    'boot-image' to allow testing unpublished cloud init versions.
+
+EOF
+}
+
+cleanup_tmp() {
+    [ -z "$TEMP_D" ] && { return 0; }
+    sudo umount "$TEMP_D/proc" &&
+    sudo umount "$TEMP_D/sys" &&
+    sudo umount "$TEMP_D/dev/pts" &&
+    sudo umount "$TEMP_D" &&
+    rm -rf "$TEMP_D" ||
+        { error "failed to remove temp dir: $TEMP_D"; return 1; }
+    return 0
+}
+
+cleanup() {
+    cleanup_tmp
+    sudo qemu-nbd -d "$NBD_DEV" ||
+        { error "failed to shut down qemu-nbd"; return 1; }
+    return 0
+}
+
+ensure_nbd_loaded() {
+    lsmod | grep nbd && return 0
+    echo "nbd not loaded, attempting modprobe"
+    sudo modprobe nbd || { error "could not load module nbd"; return 1; }
+    return 0
+}
+
+setup_chroot() {
+    base_dir="$1"
+    sudo mount none -t proc "$base_dir/proc" &&
+    sudo mount none -t sysfs "$base_dir/sys" &&
+    sudo mount -o bind /dev/pts "$base_dir/dev/pts" ||
+        { error "failed to set up chroot"; return 1; }
+    return 0
+}
+
+main() {
+    [ -n "$2" ] || { Usage 1>&2; return 1; }
+
+    diskimg="$1"
+    pkg="$2"
+    [ -f "$diskimg" ] || { error "invalid disk image: $diskimg"; return 1; }
+    [ -e "$pkg" ] || { error "invalid cloudinit package: $pkg"; return 1; }
+
+    command -v qemu-nbd 2>&1 >/dev/null ||
+        { error "qemu-nbd required"; return 1; }
+    ensure_nbd_loaded || exit 1
+    sudo qemu-nbd -c "$NBD_DEV" "$1" ||
+        { error "failed to setup nbd"; return 1; }
+
+    TEMP_D=$(mktemp -d) || { error "failed to make tempdir"; return 1; }
+    sudo mount "$NBD_DEV" "$TEMP_D" ||
+        { error "failed to mount nbd dev"; cleanup; return 1; }
+
+    setup_chroot "$TEMP_D" || return 1
+    pkg_basename=$(basename "$pkg")
+    sudo cp "$pkg" "$TEMP_D/root/$pkg_basename" &&
+    sudo chroot "$TEMP_D" /bin/bash -c "dpkg -i /root/$pkg_basename" ||
+        { error "failed to install cloudinit deb on target"; cleanup; return 1; }
+
+    cleanup || { return 1; }
+    return 0
+}
+
+main "$@"
+
+# vi: ts=4 expandtab

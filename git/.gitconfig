@@ -1,0 +1,9 @@
+[user]
+	email = wesley.wiedenmeier@gmail.com
+	name = Wesley Wiedenmeier
+[core]
+	excludesfile = /home/magicanus/.gitignore_global
+[push]
+	default = simple
+[url "git+ssh://wesley-wiedenmeier@git.launchpad.net/"]
+    insteadof = lp:
