@@ -13,7 +13,9 @@ alias sl='ls --color=auto'
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -l'
 alias la='ls --color=auto -a'
+alias cls='clear'
 alias cd..="cd .."
+alias ..="cd .."
 alias more='view -'
 alias slime='screen -S VSlime'
 # Git Aliases
