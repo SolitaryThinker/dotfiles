@@ -80,7 +80,7 @@ syntax on
 call pathogen#infect()
 
 " Solarize
-colorscheme solarized
+" colorscheme solarized
 
 nnoremap <F2> :NERDTreeToggle<CR>
 
