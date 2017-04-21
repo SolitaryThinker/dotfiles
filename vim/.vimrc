@@ -91,9 +91,9 @@ map <F4> :OpenSession<CR>
 :let g:session_autosave = "no"
 
 " Emmet should only run on html and css
-let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key="<Leader>"
-autocmd FileType html,css,php EmmetInstall
+"let g:user_emmet_install_global = 0
+"let g:user_emmet_leader_key="<Leader>"
+"autocmd FileType html,css,php EmmetInstall
 
 " Add filetype for arduino stuff
 au BufNewFile,BufRead *.ino setlocal ft=c
