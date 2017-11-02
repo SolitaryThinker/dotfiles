@@ -2,7 +2,7 @@
 	email = wlsaidhi@gmail.com
 	name = William Lin
 [core]
-	excludesfile = /home/magicanus/.gitignore_global
+	excludesfile = /home/will/.gitignore_global
 [push]
 	default = simple
 [url "git+ssh://wesley-wiedenmeier@git.launchpad.net/"]

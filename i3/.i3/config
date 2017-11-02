@@ -30,6 +30,12 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# colors (based on gruvbox)
+# class                 border  bg      fg      indic.  child
+client.focused          #ebdbb2 #ebdbb2 #282828 #282828 #928374
+client.focused_inactive #ebdbb2 #282828 #ebdbb2 #282828 #928374
+client.unfocused        #928374 #282828 #a89984 #282828 #282828
+
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec dmenu_run
 
@@ -158,10 +164,13 @@ bar {
 }
 
 # By Application rules
+#for_window [class="mpv"] floating disable, border 1pixel
+#for_window [class="Sxiv"] floating enable, border normal
+#for_window [title="plxfloatme"] floating enable, border normal
+#for_window [title="plxfloatme1"] floating enable, border normal
+#for_window [title="plxfloatme2"] floating enable, border normal
+#for_window [title="Write: hi im robit"] floating enable, border normal
+#for_window [class="Klavaro"] floating enable, border normal
 for_window [class="mpv"] floating disable, border 1pixel
 for_window [class="Sxiv"] floating enable, border normal
-for_window [title="plxfloatme"] floating enable, border normal
-for_window [title="plxfloatme1"] floating enable, border normal
-for_window [title="plxfloatme2"] floating enable, border normal
-for_window [title="Write: hi im robit"] floating enable, border normal
-for_window [class="Klavaro"] floating enable, border normal
+for_window [class="qjackctl"] floating enable, border normal

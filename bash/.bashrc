@@ -5,6 +5,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# history settings
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+alias grep='grep --color=auto'
+alias maek="make"
+
 export LANG=en_US.UTF-8
 export EDITOR="vim"
 export TERMINAL="urxvt"
@@ -100,3 +107,6 @@ fi
 PS1="\[\e[1;35m\]-[\[\e[1;32m\]\h\[\e[1;35m\]]- -[\[\e[1;36m\]\w\[\e[1;35m\]]-\n\[\e[1;35m\]-[\[\e[1;36m\]\@\[\e[1;35m\]]-\[\e[0m\]"
 
 cd ~
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
