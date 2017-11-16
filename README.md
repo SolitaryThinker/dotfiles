@@ -1,4 +1,3 @@
-dotfiles
-========
-
-My system configuration. Nothing fancy here, just vim, i3. Feel free to use my config if you want.
+basic system configuration for vim, i3, urxvt, x.org and more includes script
+to handle deployment using gnu stow
+copied from: https://github.com/Magical-Chicken/dotfiles
