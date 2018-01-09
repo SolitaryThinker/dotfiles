@@ -17,8 +17,8 @@ export EDITOR="vim"
 export TERMINAL="urxvt"
 export PATH="$PATH:/lusr/opt/pintos:/lusr/opt/bochs-2.2.6-pintos/bin"
 export PATH="$HOME/opt/cross/bin:$PATH"
-alias sl='ls --color=auto'
-alias ls='ls --color=auto'
+alias sl='ls -F --color=auto'
+alias ls='ls -F --color=auto'
 alias ll='ls --color=auto -l'
 alias la='ls --color=auto -a'
 alias cls='clear'
