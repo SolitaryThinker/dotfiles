@@ -22,10 +22,23 @@ alias ls='ls -F --color=auto'
 alias ll='ls --color=auto -l'
 alias la='ls --color=auto -a'
 alias cls='clear'
-alias cd..="cd .."
-alias ..="cd .."
+alias cl='clear;ls;'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+alias tree='tree -Ch'
+alias d='du -sh'
+alias vi='vim'
+alias v='vim'
+alias apt-get='sudo apt-get'
+alias mv="mv -v"
+alias rm="rm -vi"
+alias cp="cp -v"
 alias more='view -'
 alias slime='screen -S VSlime'
+
 # Git Aliases
 alias gcl='git clone'
 alias ga='git add'
@@ -35,8 +48,8 @@ alias gft='git fetch --all --prune --tags --verbose'
 alias gus='git reset HEAD'
 alias gm="git merge"
 alias g='git'
-alias get='git'
-alias gst='git status'
+#alias get='git'
+#alias gst='git status'
 alias gs='git status'
 alias gss='git status -s'
 alias gsu='git submodule update --init --recursive'
@@ -88,21 +101,22 @@ case $OSTYPE in
     ;;
 esac
 
-if [ -z "$EDITOR" ]; then
-    case $OSTYPE in
-      linux*)
-        alias gd='git diff | vim -R -'
-        ;;
-      darwin*)
-        alias gd='git diff | mate'
-        ;;
-      *)
-        alias gd='git diff'
-        ;;
-    esac
-else
-    alias gd="git diff | $EDITOR"
-fi
+alias gd='git diff'
+#if [ -z "$EDITOR" ]; then
+    #case $OSTYPE in
+      #linux*)
+        #alias gd='git diff | vim -R -'
+        #;;
+      #darwin*)
+        #alias gd='git diff | mate'
+        #;;
+      #*)
+        #alias gd='git diff'
+        #;;
+    #esac
+#else
+    #alias gd="git diff | $EDITOR"
+#fi
 # End Git Aliases
 PS1="\[\e[1;35m\]-[\[\e[1;32m\]\h\[\e[1;35m\]]- -[\[\e[1;36m\]\w\[\e[1;35m\]]-\n\[\e[1;35m\]-[\[\e[1;36m\]\@\[\e[1;35m\]]-\[\e[0m\]"
 
@@ -110,3 +124,14 @@ cd ~
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export GOPATH="$HOME/go"
+
+
+# LESS man page colors (makes Man pages more readable).
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
