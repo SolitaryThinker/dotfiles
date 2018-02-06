@@ -125,6 +125,7 @@ cd ~
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
 
 
 # LESS man page colors (makes Man pages more readable).
