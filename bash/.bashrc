@@ -17,6 +17,7 @@ export EDITOR="vim"
 export TERMINAL="urxvt"
 export PATH="$PATH:/lusr/opt/pintos:/lusr/opt/bochs-2.2.6-pintos/bin"
 export PATH="$HOME/opt/cross/bin:$PATH"
+alias easydb='cd $GOPATH/src/github.com/jialin-li/EasyDB'
 alias sl='ls -F --color=auto'
 alias ls='ls -F --color=auto'
 alias ll='ls --color=auto -l'
