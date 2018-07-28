@@ -116,6 +116,17 @@ syntax on
 
 nnoremap <F2> :NERDTreeToggle<CR>
 
+:highlight ExtraWhitespace ctermbg=red guibg=red
+" The following alternative may be less obtrusive.
+:highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+" Try the following if your GUI uses a dark background.
+:highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+
+
+:au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+:au InsertLeave * match ExtraWhitespace /\s\+$/
+" Show leading whitespace that includes spaces, and trailing whitespace.
+:autocmd BufWinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 "" Set up vim-session
 "map <F3> :SaveSession<CR>
 "map <F4> :OpenSession<CR>
