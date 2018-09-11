@@ -47,7 +47,7 @@ bindsym $mod+Shift+p exec zathura
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -97,7 +97,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+F1 workspace 1
@@ -161,8 +161,18 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        mode invisible
+        #mode invisible
+        position top
+		status_command i3status
 }
+# disable borders
+#new_window pixel 4
+
+# configure gaps
+#smart_gaps on
+#gaps inner 10
+#gaps outer 5
+
 
 # By Application rules
 #for_window [class="mpv"] floating disable, border 1pixel
@@ -175,3 +185,14 @@ bar {
 for_window [class="mpv"] floating disable, border 1pixel
 for_window [class="Sxiv"] floating enable, border normal
 for_window [class="qjackctl"] floating enable, border normal
+exec ~/.xconfig
+#set_from_resource $bg i3wm.background #000000
+#set_from_resource $fg i3wm.foreground #000000
+#set_from_resource $grey i3wm.color8 #000000
+#set_from_resource $green i3wm.color2 #000000
+
+# colors from xrdb
+# class                 border  bg      fg      indic.  child
+#client.focused          $green  $green  $bg     $bg     $green
+#client.focused_inactive $grey     $grey   $bg     $bg     $grey
+#client.unfocused        $grey   $bg     $grey   $bg     $bg

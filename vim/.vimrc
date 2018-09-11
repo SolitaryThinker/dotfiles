@@ -4,6 +4,11 @@
 call pathogen#infect()
 call pathogen#helptags()
 
+" saving folds
+"au BufWinLeave *.* mkview
+"au BufWinEnter *.* silent loadview
+
+set tags=tags;
 " file management
 set autoread
 set autochdir
@@ -69,6 +74,13 @@ set formatoptions=c,q,r,t " This is a sequence of letters which describes how
 " editor display
 set relativenumber
 set number          " Show line numbers.
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
 set colorcolumn=+1
 set ttyfast
 set splitbelow
@@ -104,6 +116,17 @@ syntax on
 
 nnoremap <F2> :NERDTreeToggle<CR>
 
+:highlight ExtraWhitespace ctermbg=red guibg=red
+" The following alternative may be less obtrusive.
+:highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+" Try the following if your GUI uses a dark background.
+:highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+
+
+:au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+:au InsertLeave * match ExtraWhitespace /\s\+$/
+" Show leading whitespace that includes spaces, and trailing whitespace.
+:autocmd BufWinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 "" Set up vim-session
 "map <F3> :SaveSession<CR>
 "map <F4> :OpenSession<CR>
@@ -147,3 +170,8 @@ nnoremap <F6> :SyntasticCheck<CR>
 nnoremap <F7> :let g:syntastic_java_javac_config_file=
     \systemlist("git rev-parse --show-toplevel")[0]
     \."/.syntastic_javac_config"<CR>
+let g:go_highlight_structs = 1 
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
