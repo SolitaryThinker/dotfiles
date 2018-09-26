@@ -39,3 +39,65 @@ main() {
     done
 
     # get module names
+    local target_dir="$base_dir/.."
+
+    # setup system
+    local global_pkg_file="$base_dir/packages"
+    setup && install_packages "$global_pkg_file" ||
+        error "system setup failed"
+
+    # checkout submodules if needed
+    if $checkout; then
+        git submodule update --init --recursive
+    fi
+
+    # set up modules
+    for module in "${modules[@]}"; do
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+    for module in "${modules[@]}"; do
+    for module in "${modules[@]}"; do
+    for module in "${modules[@]}"; do
+    for module in "${modules[@]}"; do
+    for module in "${modules[@]}"; do
+    for module in "${modules[@]}"; do
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+
+
+
+        # install package requiements if any
+        local package_file="${module}_packages"
+        if [ -e "$package_file" ]; then
+            install_packages "$package_file" ||
+                error "package installation failed"
+        fi
+
+        # if force set, delete any possible conflicts
+        if $force; then
+            for file in $(ls -a "$module"); do
+                [ "$file" = "." -o "$file" = ".." ] && continue;
+                local path="$target_dir/$file"
+                echo "warning, removing: $file"
+                rm -rf "$path"
+            done
+        fi
+
+        # stow the module
+        stow "$module" || error "stow failed for module: $module"
+    done
+
+    return 0
+}
+
+main "$@"
