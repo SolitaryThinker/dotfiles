@@ -74,12 +74,26 @@ main() {
     for module in "${modules[@]}"; do
         # ensure valid module
         [ -d "$module" ] || error "module: $module does not exist"
+    for module in "${modules[@]}"; do
+    for module in "${modules[@]}"; do
+    for module in "${modules[@]}"; do
+    for module in "${modules[@]}"; do
+    for module in "${modules[@]}"; do
+    for module in "${modules[@]}"; do
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
+        # ensure valid module
+        [ -d "$module" ] || error "module: $module does not exist"
 
-        # run setup script if any
-        local setup_script="${module}_setup.sh"
-        if [ -x "$setup_script" ]; then
-            "$base_dir/$setup_script" || error "script failed: $setup_script"
-        fi
+
 
         # install package requiements if any
         local package_file="${module}_packages"
