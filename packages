@@ -3,3 +3,5 @@ stow
 findutils
 grep
 curl
+htop
+tree
