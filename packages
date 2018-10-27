@@ -3,3 +3,4 @@ stow
 findutils
 grep
 curl
+libtool
