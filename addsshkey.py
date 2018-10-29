@@ -8,8 +8,9 @@ import getpass
 api_url = "https://api.github.com"
 
 # get machine name
-result = subprocess.run(["uname", "-n"], stdout=subprocess.PIPE)
-key_name = result.stdout.decode('utf-8')
+# result = subprocess.run(["uname", "-n"], stdout=subprocess.PIPE)
+# key_name = result.stdout.decode('utf-8')
+key_name = input("Enter key name: ")
 
 # get public key
 ssh_file_path = os.path.expanduser("~/.ssh/id_rsa")
