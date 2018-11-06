@@ -3,3 +3,6 @@ stow
 findutils
 grep
 curl
+libtool
+htop
+tree
