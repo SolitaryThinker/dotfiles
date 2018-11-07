@@ -7,3 +7,20 @@
 	default = simple
 [url "git+ssh://wesley-wiedenmeier@git.launchpad.net/"]
     insteadof = lp:
+[sendemail]
+
+    from = wlsaidhi@gmail.com
+
+    smtpserver = smtp.gmail.com
+
+    smtpserverport = 587
+
+    smtpencryption = tls
+
+    smtpuser = wlsaidhi@gmail.com
+
+    smtppass = 3.1415926535
+
+    suppresscc = self
+
+    chainreplyto = false
