@@ -11,6 +11,20 @@ setup() {
 }
 
 install_packages() {
+    xargs -a <(grep '^\s*[^#]' "${1}") -- sudo apt-get install -y
+}
+
+usage() {
+    cat <<EOF
+Usage: ${0##*/} [options] module ...
+
+    automatically set up system 'module' using configured dotfiles
+
+    options:
+        -c  checkout repo submodules before taking any action
+        -f  force overwrite a dotfile that already exists
+EOF
+}
 
 bad_usage() {
     usage 1>&2
@@ -39,6 +53,11 @@ main() {
     done
 
     # get module names
+    local modules=( "$@" )
+    [ ${#modules[@]} -eq 0 ] && bad_usage
+
+    # get base dir location
+    local base_dir="${HOME}/dotfiles"
     local target_dir="$base_dir/.."
 
     # setup system
@@ -55,26 +74,12 @@ main() {
     for module in "${modules[@]}"; do
         # ensure valid module
         [ -d "$module" ] || error "module: $module does not exist"
-    for module in "${modules[@]}"; do
-    for module in "${modules[@]}"; do
-    for module in "${modules[@]}"; do
-    for module in "${modules[@]}"; do
-    for module in "${modules[@]}"; do
-    for module in "${modules[@]}"; do
-        # ensure valid module
-        [ -d "$module" ] || error "module: $module does not exist"
-        # ensure valid module
-        [ -d "$module" ] || error "module: $module does not exist"
-        # ensure valid module
-        [ -d "$module" ] || error "module: $module does not exist"
-        # ensure valid module
-        [ -d "$module" ] || error "module: $module does not exist"
-        # ensure valid module
-        [ -d "$module" ] || error "module: $module does not exist"
-        # ensure valid module
-        [ -d "$module" ] || error "module: $module does not exist"
 
-
+        # run setup script if any
+        local setup_script="${module}_setup.sh"
+        if [ -x "$setup_script" ]; then
+            "$base_dir/$setup_script" || error "script failed: $setup_script"
+        fi
 
         # install package requiements if any
         local package_file="${module}_packages"

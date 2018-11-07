@@ -45,3 +45,7 @@
 	path = vim/.vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
 	branch = master
+[submodule "vim/.vim/bundle/vim-slime"]
+	path = vim/.vim/bundle/vim-slime
+	url = https://github.com/jpalardy/vim-slime.git
+	branch = master
