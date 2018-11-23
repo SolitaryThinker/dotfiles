@@ -20,6 +20,7 @@ export PATH="$HOME/opt/cross/bin:$PATH"
 alias easydb='cd $GOPATH/src/github.com/jialin-li/EasyDB'
 alias sl='ls -F --color=auto'
 alias ls='ls -F --color=auto'
+alias LS='ls -F --color=auto'
 alias ll='ls --color=auto -l'
 alias la='ls --color=auto -a'
 alias cls='clear'
