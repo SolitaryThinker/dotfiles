@@ -138,7 +138,7 @@ let g:slime_python_ipython = 1
 
 " Configure mappings for slime
 xmap <F11> <Plug>SlimeRegionSend
-nmap <F12> <Plug>SlimeParagraphSend
+nmap <F8> <Plug>SlimeParagraphSend
 nmap <F9> <Plug>SlimeConfig
 
 " configure tagbar
