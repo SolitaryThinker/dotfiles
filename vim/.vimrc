@@ -4,6 +4,10 @@
 call pathogen#infect()
 call pathogen#helptags()
 
+" key mappings
+map q: <nop>
+nnoremap Q <nop>
+
 " file management
 set autoread        " Read changes to file by another process
 
@@ -147,6 +151,9 @@ nnoremap <F4> :TagbarToggle<CR>
 
 " configure syntastic
 let g:syntastic_python_checkers=['flake8', 'python3']
+"let g:syntastic_cpp_compiler=['clang-tidy', 'gcc']
+let g:syntastic_cpp_check_header=1
+"let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_java_checkers=['javac']
 let g:syntastic_java_javac_config_file_enabled=1
 let g:syntastic_check_on_open=0
@@ -164,3 +171,6 @@ let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+" autocmd
+autocmd FileType cpp setlocal ts=2 sts=2 sw=2

@@ -10,6 +10,7 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
 alias maek="make"
 
 export LANG=en_US.UTF-8
@@ -18,6 +19,7 @@ export TERMINAL="urxvt"
 export PATH="$PATH:/lusr/opt/pintos:/lusr/opt/bochs-2.2.6-pintos/bin"
 export PATH="$HOME/opt/cross/bin:$PATH"
 alias easydb='cd $GOPATH/src/github.com/jialin-li/EasyDB'
+alias free='free -h'
 alias sl='ls -F --color=auto'
 alias ls='ls -F --color=auto'
 alias LS='ls -F --color=auto'
