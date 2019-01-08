@@ -5,6 +5,7 @@ call pathogen#infect()
 call pathogen#helptags()
 
 " key mappings
+map <F1> <nop>
 map q: <nop>
 nnoremap Q <nop>
 
@@ -117,6 +118,16 @@ nnoremap <F2> :NERDTreeToggle<CR>
 :au InsertLeave * match ExtraWhitespace /\s\+$/
 " Show leading whitespace that includes spaces, and trailing whitespace.
 :autocmd BufWinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+fun! StripTrailingWhitespace()
+    " Only strip if the b:noStripeWhitespace variable isn't set
+    if exists('b:noStripWhitespace')
+        return
+    endif
+    %s/\s\+$//e
+endfun
+
+autocmd BufWritePre * call StripTrailingWhitespace()
+autocmd FileType markdown let b:noStripWhitespace=1
 
 "" Set up vim-session
 "map <F3> :SaveSession<CR>
