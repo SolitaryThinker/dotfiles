@@ -6,8 +6,8 @@
 [[ $- != *i* ]] && return
 
 # history settings
-HISTSIZE=1000
-HISTFILESIZE=2000
+export HISTSIZE=
+export HISTFILESIZE=
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -143,6 +143,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
-fontsize 13
+fontsize 12
 
 eval $(thefuck --alias)

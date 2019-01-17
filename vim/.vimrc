@@ -76,7 +76,7 @@ set relativenumber  " Show relative line numbers.
 set number          " Show line numbers.
 set mouse=a         " Enable the use of the mouse.
 set ttyfast
-set splitbelow
+set splitbelow splitright
 set title
 
 " only show relative line number on focused buffer
@@ -177,7 +177,7 @@ nnoremap <F6> :SyntasticCheck<CR>
 nnoremap <F7> :let g:syntastic_java_javac_config_file=
     \systemlist("git rev-parse --show-toplevel")[0]
     \."/.syntastic_javac_config"<CR>
-let g:go_highlight_structs = 1 
+let g:go_highlight_structs = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
