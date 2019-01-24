@@ -131,6 +131,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.scripts"
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 
