@@ -13,11 +13,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias maek="make"
 
-export LANG=en_US.UTF-8
-export EDITOR="vim"
-export TERMINAL="urxvt"
-export PATH="$PATH:/lusr/opt/pintos:/lusr/opt/bochs-2.2.6-pintos/bin"
-export PATH="$HOME/opt/cross/bin:$PATH"
 alias easydb='cd $GOPATH/src/github.com/jialin-li/EasyDB'
 alias free='free -h'
 alias sl='ls -F --color=auto'
@@ -134,7 +129,6 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.scripts"
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
-
 
 # LESS man page colors (makes Man pages more readable).
 export LESS_TERMCAP_mb=$'\E[01;31m'
