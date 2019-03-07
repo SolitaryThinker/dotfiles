@@ -7,3 +7,5 @@ thefuck
 python-pip
 cmake
 ctags
+fzf
+keychain
