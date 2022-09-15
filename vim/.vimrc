@@ -129,6 +129,13 @@ endfun
 autocmd BufWritePre * call StripTrailingWhitespace()
 autocmd FileType markdown let b:noStripWhitespace=1
 
+"" Clang format
+function! Formatonsave()
+  let l:formatdiff = 1
+  py3f /usr/share/clang/clang-format-14/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+
 "" Set up vim-session
 "map <F3> :SaveSession<CR>
 "map <F4> :OpenSession<CR>
