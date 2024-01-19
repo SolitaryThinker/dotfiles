@@ -5,3 +5,5 @@ xrdb -I$HOME merge ~/.Xresources
 xset -dpms
 [ -x ~/.screenlayout/default.sh ] && ~/.screenlayout/default.sh
 [ -x ~/.fehbg ] && ~/.fehbg
+xrandr --auto
+redshift -O 2900 &

@@ -5,7 +5,6 @@
 	excludesfile = /home/will/.gitignore_global
 [push]
 	default = simple
-[url "git+ssh://wesley-wiedenmeier@git.launchpad.net/"]
     insteadof = lp:
 [sendemail]
 
@@ -24,3 +23,12 @@
     suppresscc = self
 
     chainreplyto = false
+[url "https://SolitaryThinker:4b4573a7936c876041508c47888b60d7ab14bf6b@github.com"]
+	insteadOf = https://github.com
+[http]
+	sslVerify = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

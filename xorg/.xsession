@@ -1,3 +1,4 @@
 #!/bin/bash
-
-exec i3
+. ~/.profile
+. ~/.xinitrc
+#exec i3

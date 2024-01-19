@@ -163,15 +163,15 @@ nnoremap <F4> :TagbarToggle<CR>
 " configure syntastic
 let g:syntastic_python_checkers=['flake8', 'python3']
 "let g:syntastic_cpp_compiler=['clang-tidy', 'gcc']
-let g:syntastic_cpp_check_header=1
+let g:syntastic_cpp_check_header = 0
+let g:syntastic_c_check_header = 0
 "let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_java_checkers=['javac']
 let g:syntastic_java_javac_config_file_enabled=1
-let g:syntastic_check_on_open=0
-let g:syntastic_check_on_wq=0
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors=1
+nnoremap <F12> :SyntasticToggleMode<CR>
 nnoremap <F5> :SyntasticReset<CR>
 nnoremap <F6> :SyntasticCheck<CR>
 nnoremap <F7> :let g:syntastic_java_javac_config_file=
@@ -182,6 +182,9 @@ let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive' }
 
 " autocmd
 autocmd FileType cpp setlocal ts=2 sts=2 sw=2
