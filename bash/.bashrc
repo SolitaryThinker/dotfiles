@@ -13,7 +13,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias maek="make"
 
-alias easydb='cd $GOPATH/src/github.com/jialin-li/EasyDB'
 alias free='free -h'
 alias sl='ls -F --color=auto'
 alias ls='ls -F --color=auto'
@@ -125,6 +124,7 @@ cd ~
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/usr/go/local/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.scripts"
 export GOPATH="$HOME/go"

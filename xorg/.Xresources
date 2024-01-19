@@ -14,6 +14,7 @@ Xft.rgba: rgb
 URxvt*saveLines: 2000
 URxvt*font: xft:Inconsolata:size=13
 URxvt*scrollBar: false
+URxvt.perl-ext-common:-confirm-paste
 
 ! xclock setings
 XClock*majorColor: #ebdbb2

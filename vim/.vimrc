@@ -129,6 +129,13 @@ endfun
 autocmd BufWritePre * call StripTrailingWhitespace()
 autocmd FileType markdown let b:noStripWhitespace=1
 
+"" Clang format
+function! Formatonsave()
+  let l:formatdiff = 1
+  py3f /usr/share/clang/clang-format-14/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+
 "" Set up vim-session
 "map <F3> :SaveSession<CR>
 "map <F4> :OpenSession<CR>
@@ -172,6 +179,7 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors=1
 nnoremap <F12> :SyntasticToggleMode<CR>
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <F5> :SyntasticReset<CR>
 nnoremap <F6> :SyntasticCheck<CR>
 nnoremap <F7> :let g:syntastic_java_javac_config_file=
