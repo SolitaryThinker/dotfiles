@@ -140,4 +140,10 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 fontsize 12
 
-eval $(thefuck --alias)
+export HF_HOME="/workspace/.cache/huggingface/"
+export HF_DATASETS_CACHE="/workspace/.cache/huggingface/datasets/"
+export DEFAULT_HF_METRICS_CACHE="/workspace/.cache/huggingface/metrics/"
+export DEFAULT_HF_MODULES_CACHE="/workspace/.cache/huggingface/modules/"
+export HUGGINGFACE_HUB_CACHE="/workspace/.cache/huggingface/hub/"
+export HUGGINGFACE_ASSETS_CACHE="/workspace/.cache/huggingface/assets/"
+
