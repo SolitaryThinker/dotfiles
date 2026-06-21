@@ -3,7 +3,7 @@
 export EDITOR="vim"
 
 export PATH=$PATH:$HOME/.scripts
-export TERMINAL="urxvt"
+export TERMINAL="kitty"
 export PATH="$PATH:/lusr/opt/pintos:/lusr/opt/bochs-2.2.6-pintos/bin"
 export PATH="$HOME/opt/cross/bin:$PATH"
 

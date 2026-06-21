@@ -10,11 +10,12 @@ Xft.lcdfilter: lcddefault
 Xft.hinting: true
 Xft.rgba: rgb
 
-! urxvt settings
-URxvt*saveLines: 2000
-URxvt*font: xft:Inconsolata:size=13
-URxvt*scrollBar: false
-URxvt.perl-ext-common:-confirm-paste
+! urxvt settings (no longer used — terminal is now kitty, see kitty module:
+!   ~/.config/kitty/kitty.conf). Kept commented for reference.
+!URxvt*saveLines: 2000
+!URxvt*font: xft:Inconsolata:size=13
+!URxvt*scrollBar: false
+!URxvt.perl-ext-common:-confirm-paste
 
 ! xclock setings
 XClock*majorColor: #ebdbb2
