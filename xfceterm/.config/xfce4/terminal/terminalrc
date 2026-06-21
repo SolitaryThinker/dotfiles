@@ -1,0 +1,28 @@
+[Configuration]
+# Font — ported from kitty/urxvt (Inconsolata, size 16)
+FontName=Inconsolata 16
+FontUseSystem=FALSE
+
+# Scrollback — matches urxvt saveLines / kitty scrollback_lines
+ScrollingLines=2000
+ScrollingBar=TERMINAL_SCROLLBAR_NONE
+
+# No menubar/toolbar; let i3 manage window borders
+MiscMenubarDefault=FALSE
+MiscToolbarDefault=FALSE
+MiscBordersDefault=TRUE
+
+# Less friction (mirrors urxvt -confirm-paste: no paste dialog)
+MiscShowUnsafePasteDialog=FALSE
+MiscConfirmClose=FALSE
+
+# Cursor
+MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
+MiscCursorBlinks=FALSE
+
+# Colors: gruvbox dark, high contrast (identical to the kitty config)
+ColorForeground=#fbf1c7
+ColorBackground=#1d2021
+ColorCursor=#fbf1c7
+ColorCursorForeground=#1d2021
+ColorPalette=#282828;#fb4934;#b8bb26;#fabd2f;#83a598;#d3869b;#8ec07c;#ebdbb2;#928374;#fb4934;#b8bb26;#fabd2f;#83a598;#d3869b;#8ec07c;#fbf1c7
