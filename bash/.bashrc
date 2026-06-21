@@ -143,8 +143,18 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 #eval $(thefuck --alias)
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# nvm lazy-load: sourcing nvm.sh costs ~0.1s on every shell. Instead define
+# shims for nvm/node/npm/npx that source nvm.sh on first use, then hand off
+# to the real command. Add tools here (e.g. yarn, pnpm) if you use them.
+_load_nvm() {
+    unset -f nvm node npm npx _load_nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # nvm bash_completion
+}
+nvm()  { _load_nvm; nvm "$@"; }
+node() { _load_nvm; node "$@"; }
+npm()  { _load_nvm; npm "$@"; }
+npx()  { _load_nvm; npx "$@"; }
 
 # opencode
 export PATH=/home/will/.opencode/bin:$PATH
