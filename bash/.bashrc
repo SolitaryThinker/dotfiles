@@ -163,16 +163,13 @@ esac
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/will/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+# NOTE: source conda.sh directly instead of `conda shell.bash hook`.
+# The hook spawns a python process on every shell (~1s); conda.sh just
+# defines a lazy `conda` function and is effectively free (~0.01s).
+if [ -f "/home/will/miniconda3/etc/profile.d/conda.sh" ]; then
+    . "/home/will/miniconda3/etc/profile.d/conda.sh"
 else
-    if [ -f "/home/will/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/will/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/will/miniconda3/bin:$PATH"
-    fi
+    export PATH="/home/will/miniconda3/bin:$PATH"
 fi
-unset __conda_setup
 # <<< conda initialize <<<
 
